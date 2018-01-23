@@ -146,7 +146,7 @@ public class MainActivity extends AppCompatActivity {
 
                     //setu[ and handover data to the RV
                     mRVCurrencyPrice = (RecyclerView) findViewById(R.id.currencyRV);
-                    mAdapter new AdapterCurrency(MainActivity.this, data);
+                    mAdapter =  new AdapterCurrency(MainActivity.this, data);
                     mRVCurrencyPrice.setAdapter(mAdapter);
                     mRVCurrencyPrice.setLayoutManager(new LinearLayoutManager(MainActivity.this));
                 } catch (JSONException e) {
