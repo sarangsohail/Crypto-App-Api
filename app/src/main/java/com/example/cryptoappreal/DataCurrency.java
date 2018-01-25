@@ -8,6 +8,6 @@ class DataCurrency {
 
     public String currencyID;
 
-    public int currencyPrice;
+    public double currencyPrice;
 
 }

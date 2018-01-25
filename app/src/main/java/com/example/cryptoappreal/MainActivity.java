@@ -31,7 +31,7 @@ public class MainActivity extends AppCompatActivity {
 
     //done in milliseconds
     public static final int CONNECTION_TIMEOUT = 1000;
-    public static final int READ_TIMEOUT = 15000;
+    public static final int READ_TIMEOUT = 10000;
     private RecyclerView mRVCurrencyPrice;
     private AdapterCurrency mAdapter;
 
@@ -138,7 +138,7 @@ public class MainActivity extends AppCompatActivity {
                         DataCurrency dataCurrency = new DataCurrency();
                         //todo add / show price in the recycler view
                         dataCurrency.currencyID  = jsonObject.getString("name");
-                        dataCurrency.currencyPrice = jsonObject.getInt("price_usd");
+                        dataCurrency.currencyPrice = jsonObject.getDouble("price_usd");
                         data.add(dataCurrency);
                     }
 
