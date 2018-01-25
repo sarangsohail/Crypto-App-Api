@@ -36,8 +36,6 @@ public class MainActivity extends AppCompatActivity {
     private AdapterCurrency mAdapter;
 
 
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -71,7 +69,6 @@ public class MainActivity extends AppCompatActivity {
                 url = new URL("https://api.coinmarketcap.com/v1/ticker");
 
             } catch (MalformedURLException e) {
-                // TODO Auto-generated catch block
                 e.printStackTrace();
                 return e.toString();
             }
@@ -83,11 +80,10 @@ public class MainActivity extends AppCompatActivity {
                 conn.setConnectTimeout(CONNECTION_TIMEOUT);
                 conn.setRequestMethod("GET");
 
-                // setDoOutput to true as we recieve data from json file
+                // setDoOutput to true as we receive data from json file
                 conn.setDoOutput(true);
 
             } catch (IOException e1) {
-                // TODO Auto-generated catch block
                 e1.printStackTrace();
                 return e1.toString();
             }
@@ -140,7 +136,9 @@ public class MainActivity extends AppCompatActivity {
                     for (int i =0; i< jsonArray.length(); i++){
                         JSONObject jsonObject = jsonArray.getJSONObject(i);
                         DataCurrency dataCurrency = new DataCurrency();
-                        dataCurrency.currencyID  = jsonObject.getString("id");
+                        //todo add / show price in the recycler view
+                        dataCurrency.currencyID  = jsonObject.getString("name");
+                        dataCurrency.currencyPrice = jsonObject.getInt("price_usd");
                         data.add(dataCurrency);
                     }
 

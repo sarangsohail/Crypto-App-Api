@@ -10,11 +10,17 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="fish name"
-        android:id="@+id/textCurrencyName"
+        android:id="@+id/currencyName"
         android:layout_marginLeft="5dp"/>
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:id="@+id/currencyPrice"
+        android:layout_alignParentEnd="true"
 
+    />
 
 </RelativeLayout>
 
