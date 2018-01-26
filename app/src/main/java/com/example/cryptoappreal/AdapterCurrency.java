@@ -19,7 +19,6 @@ class AdapterCurrency extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
     Context mContext;
     LayoutInflater layoutInflater;
     List<DataCurrency> currencyList = Collections.emptyList();
-    DataCurrency current;
 
     public AdapterCurrency(Context context, List<DataCurrency> data) {
         this.mContext = context;
@@ -39,7 +38,7 @@ class AdapterCurrency extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
         MyHolder myholder = (MyHolder)holder;
         DataCurrency current = currencyList.get(position);
         myholder.textCurrencyName.setText(current.currencyID);
-
+        myholder.textCurrencyPrice.setText("$" + current.currencyPrice);
 
 
     }
