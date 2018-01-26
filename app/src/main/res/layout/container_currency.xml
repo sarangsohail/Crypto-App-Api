@@ -19,8 +19,8 @@
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:id="@+id/currencyPrice"
         android:layout_alignParentEnd="true"
-
     />
+
 
 </RelativeLayout>
 

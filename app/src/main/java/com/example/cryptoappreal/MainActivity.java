@@ -139,6 +139,7 @@ public class MainActivity extends AppCompatActivity {
                         //todo add / show price in the recycler view
                         dataCurrency.currencyID  = jsonObject.getString("name");
                         dataCurrency.currencyPrice = jsonObject.getDouble("price_usd");
+                        dataCurrency.currencyImage = jsonObject.getString("symbol");
                         data.add(dataCurrency);
                     }
 

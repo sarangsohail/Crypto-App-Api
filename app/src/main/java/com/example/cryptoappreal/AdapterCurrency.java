@@ -5,10 +5,10 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 import java.util.Collections;
 import java.util.List;
-import java.text.DecimalFormat;
 
 /**
  * Created by sarang on 23/01/2018.
@@ -39,7 +39,9 @@ class AdapterCurrency extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
         MyHolder myholder = (MyHolder)holder;
         DataCurrency current = currencyList.get(position);
         myholder.textCurrencyName.setText(current.currencyID);
-        myholder.textCurrencyPrice.setText("$" + current.currencyPrice);
+
+
+
     }
 
     @Override

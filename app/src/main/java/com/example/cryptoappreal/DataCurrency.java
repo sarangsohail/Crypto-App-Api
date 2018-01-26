@@ -7,7 +7,7 @@ package com.example.cryptoappreal;
 class DataCurrency {
 
     public String currencyID;
-
     public double currencyPrice;
+    public String currencyImage;
 
 }
