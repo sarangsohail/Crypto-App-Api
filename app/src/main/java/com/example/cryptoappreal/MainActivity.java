@@ -51,19 +51,22 @@ public class MainActivity extends AppCompatActivity implements SwipeRefreshLayou
         mSwipeRefreshLayout = (SwipeRefreshLayout) findViewById(R.id.swiperefresh);
         mSwipeRefreshLayout.setOnRefreshListener(this);
 
-        mSwipeRefreshLayout.setOnRefreshListener(
-                new SwipeRefreshLayout.OnRefreshListener() {
-                    @Override
-                    public void onRefresh() {
-                        Log.d(TAG, "onRefresh 1 clicked!!!!");
-                        }
-                }
-        );
 
             mSwipeRefreshLayout.setColorSchemeResources(
                     R.color.colorAccent,
                     R.color.colorPrimary,
                     R.color.colorPrimaryDark);
+
+    }
+
+    @Override
+    public void onPointerCaptureChanged(boolean hasCapture) {
+
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
 
         mSwipeRefreshLayout.post(new Runnable() {
             @Override public void run() {
@@ -76,17 +79,11 @@ public class MainActivity extends AppCompatActivity implements SwipeRefreshLayou
     }
 
     @Override
-    public void onPointerCaptureChanged(boolean hasCapture) {
-
-    }
-
-    @Override
     public void onRefresh() {
-//        Log.d(TAG, "onRefresh 2 clicked!!!!");
-//      new AsyncFetch().execute();
-//
-    }
+          Log.d(TAG, "onRefresh 2 clicked!!!!");
+          new AsyncFetch().execute();
 
+    }
 
     private class AsyncFetch extends AsyncTask<String, String, String> {
         ProgressDialog pdLoading = new ProgressDialog(MainActivity.this);
@@ -183,33 +180,25 @@ public class MainActivity extends AppCompatActivity implements SwipeRefreshLayou
                     }
 
                     //setu[ and handover data to the RV
+                    mRVCurrencyPrice = (RecyclerView) findViewById(R.id.currencyRV);
+
                     mAdapter =  new AdapterCurrency(MainActivity.this, data);
                     mRVCurrencyPrice.setAdapter(mAdapter);
                     mSwipeRefreshLayout.setRefreshing(false);
                     mRVCurrencyPrice.setLayoutManager(new LinearLayoutManager(MainActivity.this));
 
-                    mRVCurrencyPrice = (RecyclerView) findViewById(R.id.currencyRV);
-
-
 
                 } catch (JSONException e) {
 
                     Toast.makeText(MainActivity.this, e.toString(), Toast.LENGTH_SHORT).show();
-
-
                 }
-
         }
 
-
     }
-
-
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         return super.onCreateOptionsMenu(menu);
-
     }
 
     @Override
