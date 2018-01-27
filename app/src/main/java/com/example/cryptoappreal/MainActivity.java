@@ -179,13 +179,7 @@ public class MainActivity extends AppCompatActivity implements SwipeRefreshLayou
                     mRVCurrencyPrice.setAdapter(mAdapter);
                     mRVCurrencyPrice.setLayoutManager(new LinearLayoutManager(MainActivity.this));
 
-                    mSwipeRefreshLayout.post(new Runnable() {
-                        @Override
-                        public void run() {
-                            mSwipeRefreshLayout.setRefreshing(true);
-                            new AsyncFetch().execute();
-                        }
-                    });
+
 
 
 
