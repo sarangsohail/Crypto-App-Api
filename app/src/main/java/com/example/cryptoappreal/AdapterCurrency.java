@@ -21,6 +21,7 @@ class AdapterCurrency extends RecyclerView.Adapter<RecyclerView.ViewHolder>  {
     LayoutInflater layoutInflater;
     List<DataCurrency> currencyList = Collections.emptyList();
 
+
     public AdapterCurrency(Context context, List<DataCurrency> data) {
         this.mContext = context;
         layoutInflater = LayoutInflater.from(context);

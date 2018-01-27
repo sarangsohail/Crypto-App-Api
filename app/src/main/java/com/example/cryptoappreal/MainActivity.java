@@ -41,26 +41,38 @@ public class MainActivity extends AppCompatActivity implements SwipeRefreshLayou
     private RecyclerView mRVCurrencyPrice;
     private AdapterCurrency mAdapter;
     SwipeRefreshLayout mSwipeRefreshLayout;
+    private static final String TAG = "MyActivity";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        //Make call to AsyncTask
-        new AsyncFetch().execute();
+
+        mSwipeRefreshLayout = (SwipeRefreshLayout) findViewById(R.id.swiperefresh);
+        mSwipeRefreshLayout.setOnRefreshListener(this);
+
         mSwipeRefreshLayout.setOnRefreshListener(
                 new SwipeRefreshLayout.OnRefreshListener() {
                     @Override
                     public void onRefresh() {
-
-                        // This method performs the actual data-refresh operation.
-                        // The method calls setRefreshing(false) when it's finished.
-                        new AsyncFetch().execute();
-                    }
+                        Log.d(TAG, "onRefresh 1 clicked!!!!");
+                        }
                 }
         );
 
+            mSwipeRefreshLayout.setColorSchemeResources(
+                    R.color.colorAccent,
+                    R.color.colorPrimary,
+                    R.color.colorPrimaryDark);
 
+        mSwipeRefreshLayout.post(new Runnable() {
+            @Override public void run() {
+
+                mSwipeRefreshLayout.setRefreshing(true);
+                // directly call onRefresh() method
+                new AsyncFetch().execute();
+            }
+        });
     }
 
     @Override
@@ -70,7 +82,9 @@ public class MainActivity extends AppCompatActivity implements SwipeRefreshLayou
 
     @Override
     public void onRefresh() {
-        new AsyncFetch().execute();
+//        Log.d(TAG, "onRefresh 2 clicked!!!!");
+//      new AsyncFetch().execute();
+//
     }
 
 
@@ -84,9 +98,9 @@ public class MainActivity extends AppCompatActivity implements SwipeRefreshLayou
             super.onPreExecute();
 
             //this method will be running on UI thread
-            pdLoading.setMessage("\tLoading...");
-            pdLoading.setCancelable(false);
-            pdLoading.show();
+//            pdLoading.setMessage("\tLoading...");
+//            pdLoading.setCancelable(false);
+//            pdLoading.show();
 
         }
 
@@ -94,9 +108,7 @@ public class MainActivity extends AppCompatActivity implements SwipeRefreshLayou
         protected String doInBackground(String... params) {
             try {
 
-                // Enter URL address where your json file resides
-                // Even you can make call to php file which returns json data
-                url = new URL("https://api.coinmarketcap.com/v1/ticker");
+              url = new URL("https://api.coinmarketcap.com/v1/ticker");
 
             } catch (MalformedURLException e) {
                 e.printStackTrace();
@@ -150,7 +162,6 @@ public class MainActivity extends AppCompatActivity implements SwipeRefreshLayou
                 conn.disconnect();
             }
 
-
         }
 
         @Override
@@ -166,21 +177,18 @@ public class MainActivity extends AppCompatActivity implements SwipeRefreshLayou
                     for (int i =0; i< jsonArray.length(); i++){
                         JSONObject jsonObject = jsonArray.getJSONObject(i);
                         DataCurrency dataCurrency = new DataCurrency();
-                        //todo add / show price in the recycler view
                         dataCurrency.currencyID  = jsonObject.getString("name");
                         dataCurrency.currencyPrice = jsonObject.getDouble("price_usd");
                         data.add(dataCurrency);
                     }
 
                     //setu[ and handover data to the RV
-                    mRVCurrencyPrice = (RecyclerView) findViewById(R.id.currencyRV);
-
                     mAdapter =  new AdapterCurrency(MainActivity.this, data);
                     mRVCurrencyPrice.setAdapter(mAdapter);
+                    mSwipeRefreshLayout.setRefreshing(false);
                     mRVCurrencyPrice.setLayoutManager(new LinearLayoutManager(MainActivity.this));
 
-
-
+                    mRVCurrencyPrice = (RecyclerView) findViewById(R.id.currencyRV);
 
 
 
