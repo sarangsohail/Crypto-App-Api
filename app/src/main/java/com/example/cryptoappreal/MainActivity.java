@@ -1,11 +1,17 @@
 package com.example.cryptoappreal;
 
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.os.AsyncTask;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewDebug;
 import android.widget.LinearLayout;
@@ -27,14 +33,14 @@ import java.nio.charset.MalformedInputException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements SwipeRefreshLayout.OnRefreshListener {
 
     //done in milliseconds
     public static final int CONNECTION_TIMEOUT = 1000;
     public static final int READ_TIMEOUT = 10000;
     private RecyclerView mRVCurrencyPrice;
     private AdapterCurrency mAdapter;
-
+    SwipeRefreshLayout mSwipeRefreshLayout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,7 +48,31 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         //Make call to AsyncTask
         new AsyncFetch().execute();
+        mSwipeRefreshLayout.setOnRefreshListener(
+                new SwipeRefreshLayout.OnRefreshListener() {
+                    @Override
+                    public void onRefresh() {
+
+                        // This method performs the actual data-refresh operation.
+                        // The method calls setRefreshing(false) when it's finished.
+                        new AsyncFetch().execute();
+                    }
+                }
+        );
+
+
     }
+
+    @Override
+    public void onPointerCaptureChanged(boolean hasCapture) {
+
+    }
+
+    @Override
+    public void onRefresh() {
+        new AsyncFetch().execute();
+    }
+
 
     private class AsyncFetch extends AsyncTask<String, String, String> {
         ProgressDialog pdLoading = new ProgressDialog(MainActivity.this);
@@ -144,9 +174,22 @@ public class MainActivity extends AppCompatActivity {
 
                     //setu[ and handover data to the RV
                     mRVCurrencyPrice = (RecyclerView) findViewById(R.id.currencyRV);
+
                     mAdapter =  new AdapterCurrency(MainActivity.this, data);
                     mRVCurrencyPrice.setAdapter(mAdapter);
                     mRVCurrencyPrice.setLayoutManager(new LinearLayoutManager(MainActivity.this));
+
+                    mSwipeRefreshLayout.post(new Runnable() {
+                        @Override
+                        public void run() {
+                            mSwipeRefreshLayout.setRefreshing(true);
+                            new AsyncFetch().execute();
+                        }
+                    });
+
+
+
+
                 } catch (JSONException e) {
 
                     Toast.makeText(MainActivity.this, e.toString(), Toast.LENGTH_SHORT).show();
@@ -154,12 +197,21 @@ public class MainActivity extends AppCompatActivity {
 
                 }
 
-
-
-
-
-
         }
+
+
     }
 
+
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        return super.onCreateOptionsMenu(menu);
+
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        return super.onOptionsItemSelected(item);
+    }
 }

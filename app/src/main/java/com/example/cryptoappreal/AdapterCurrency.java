@@ -1,6 +1,7 @@
 package com.example.cryptoappreal;
 
 import android.content.Context;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -14,7 +15,7 @@ import java.util.List;
  * Created by sarang on 23/01/2018.
  */
 
-class AdapterCurrency extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
+class AdapterCurrency extends RecyclerView.Adapter<RecyclerView.ViewHolder>  {
 
     Context mContext;
     LayoutInflater layoutInflater;
@@ -47,6 +48,8 @@ class AdapterCurrency extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
     public int getItemCount() {
         return currencyList.size();
     }
+
+
 
     class MyHolder extends RecyclerView.ViewHolder {
 
