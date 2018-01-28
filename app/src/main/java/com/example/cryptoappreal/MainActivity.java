@@ -2,6 +2,7 @@ package com.example.cryptoappreal;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.nfc.Tag;
 import android.os.AsyncTask;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AppCompatActivity;
@@ -64,6 +65,14 @@ public class MainActivity extends AppCompatActivity implements SwipeRefreshLayou
 
     }
 
+    public void refreshItemClicked(){
+        mSwipeRefreshLayout.setColorSchemeResources(
+                R.color.colorAccent,
+                R.color.colorPrimary,
+                R.color.colorPrimaryDark);
+                //get the refresh animation loading and run the Asynfetch method
+                onStart();
+    }
     @Override
     protected void onStart() {
         super.onStart();
@@ -80,7 +89,6 @@ public class MainActivity extends AppCompatActivity implements SwipeRefreshLayou
 
     @Override
     public void onRefresh() {
-          Log.d(TAG, "onRefresh 2 clicked!!!!");
           new AsyncFetch().execute();
 
     }
@@ -198,11 +206,16 @@ public class MainActivity extends AppCompatActivity implements SwipeRefreshLayou
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        return super.onCreateOptionsMenu(menu);
-    }
-
+        MenuInflater menuInflater = getMenuInflater();
+        menuInflater.inflate(R.menu.menu_items, menu);
+        return true;
+        }
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
+        if (item.getItemId() == R.id.refresh_button){
+            //show the refresh animation and load the data again
+            refreshItemClicked();
+        }
         return super.onOptionsItemSelected(item);
     }
 }
