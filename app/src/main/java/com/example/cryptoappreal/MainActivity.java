@@ -34,15 +34,19 @@ import java.nio.charset.MalformedInputException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MainActivity extends AppCompatActivity implements SwipeRefreshLayout.OnRefreshListener {
+public class MainActivity extends AppCompatActivity implements SwipeRefreshLayout.OnRefreshListener, AdapterCurrency.OnItemClickListener{
 
-    //done in milliseconds
+    //done in milliseconds - constants
     public static final int CONNECTION_TIMEOUT = 1000;
     public static final int READ_TIMEOUT = 10000;
+    public static final String EXTRA_CURRENCY_ID = "id";
+
     private RecyclerView mRVCurrencyPrice;
     private AdapterCurrency mAdapter;
     SwipeRefreshLayout mSwipeRefreshLayout;
     private static final String TAG = "MyActivity";
+    List<DataCurrency> jsonData;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -93,7 +97,18 @@ public class MainActivity extends AppCompatActivity implements SwipeRefreshLayou
 
     }
 
-    private class AsyncFetch extends AsyncTask<String, String, String> {
+    @Override
+    public void setOnClickItemListener(int position) {
+        Intent intent = new Intent(this, CurrencyDetail.class);
+        DataCurrency clickedItem = jsonData.get(position);
+
+        intent.putExtra(EXTRA_CURRENCY_ID, clickedItem.currencyID);
+        startActivity(intent);
+        //Todo add the xml file for new currencyDetail Class and retrive the id
+    }
+
+
+    private class AsyncFetch extends AsyncTask<String, String, String>  {
         ProgressDialog pdLoading = new ProgressDialog(MainActivity.this);
         HttpURLConnection conn;
         URL url = null;
@@ -189,9 +204,9 @@ public class MainActivity extends AppCompatActivity implements SwipeRefreshLayou
 
                     //setu[ and handover data to the RV
                     mRVCurrencyPrice = (RecyclerView) findViewById(R.id.currencyRV);
-
                     mAdapter =  new AdapterCurrency(MainActivity.this, data);
                     mRVCurrencyPrice.setAdapter(mAdapter);
+                    mAdapter.setOnClickListener(MainActivity.this);
                     mSwipeRefreshLayout.setRefreshing(false);
                     mRVCurrencyPrice.setLayoutManager(new LinearLayoutManager(MainActivity.this));
 
@@ -201,6 +216,7 @@ public class MainActivity extends AppCompatActivity implements SwipeRefreshLayou
                     Toast.makeText(MainActivity.this, e.toString(), Toast.LENGTH_SHORT).show();
                 }
         }
+
 
     }
 
@@ -218,4 +234,9 @@ public class MainActivity extends AppCompatActivity implements SwipeRefreshLayou
         }
         return super.onOptionsItemSelected(item);
     }
+
+
+
+
 }
+
