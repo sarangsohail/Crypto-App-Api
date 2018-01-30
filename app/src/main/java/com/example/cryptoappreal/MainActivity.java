@@ -41,6 +41,15 @@ public class MainActivity extends AppCompatActivity implements SwipeRefreshLayou
     public static final int READ_TIMEOUT = 10000;
     public static final String EXTRA_CURRENCY_ID = "id";
     public static final String EXTRA_CURRENCY_PRICE = "price_usd";
+    public static final String EXTRA_CURRENCY_SYMBOL = "symbol";
+    public static final String EXTRA_CURRENCY_RANK = "rank";
+    public static final String EXTRA_CURRENCY_PRICE_BTC = "priceBTC";
+    public static final String EXTRA_CURRENCY_24H_VOLUME_USD = "24Volume";
+    public static final String EXTRA_CURRENCY_MARKETCAP_USD  = "marketcap";
+    public static final String EXTRA_CURRENCY_AVAILABLE_SUPPLY = "supply";
+    public static final String EXTRA_CURRENCY_TOTAL_SUPPLY = "totalSupply";
+    public static final String EXTRA_CURRENCY_MAX_SUPPLY= "maxSupply";
+
 
     private RecyclerView mRVCurrencyPrice;
     private AdapterCurrency mAdapter;
@@ -202,6 +211,16 @@ public class MainActivity extends AppCompatActivity implements SwipeRefreshLayou
                         DataCurrency dataCurrency = new DataCurrency();
                         dataCurrency.currencyID  = jsonObject.getString("name");
                         dataCurrency.currencyPrice = jsonObject.getDouble("price_usd");
+                        dataCurrency.currencySymbol = jsonObject.getString("symbol");
+                        dataCurrency.currencySymbol = jsonObject.getString("rank");
+                        dataCurrency.currencySymbol = jsonObject.getString("price_usd");
+                        dataCurrency.currencySymbol = jsonObject.getString("24h_volume_usd");
+                        dataCurrency.currencySymbol = jsonObject.getString("market_cap_usd");
+                        dataCurrency.currencySymbol = jsonObject.getString("available_supply");
+                        dataCurrency.currencySymbol = jsonObject.getString("total_supply");
+                        dataCurrency.currencySymbol = jsonObject.getString("max_supply");
+
+
                         jsonData.add(dataCurrency);
                     }
 
@@ -219,7 +238,6 @@ public class MainActivity extends AppCompatActivity implements SwipeRefreshLayou
                     Toast.makeText(MainActivity.this, e.toString(), Toast.LENGTH_SHORT).show();
                 }
         }
-
 
     }
 
