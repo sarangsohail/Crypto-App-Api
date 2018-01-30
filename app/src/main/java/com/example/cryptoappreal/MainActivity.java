@@ -47,7 +47,7 @@ public class MainActivity extends AppCompatActivity implements SwipeRefreshLayou
     public static final String EXTRA_CURRENCY_24H_VOLUME_USD = "24Volume";
     public static final String EXTRA_CURRENCY_MARKETCAP_USD  = "marketcap";
     public static final String EXTRA_CURRENCY_AVAILABLE_SUPPLY = "supply";
-    public static final String EXTRA_CURRENCY_TOTAL_SUPPLY = "totalSupply";
+//    public static final String EXTRA_CURRENCY_TOTAL_SUPPLY = "totalSupply";
     public static final String EXTRA_CURRENCY_MAX_SUPPLY= "maxSupply";
 
 
@@ -114,8 +114,16 @@ public class MainActivity extends AppCompatActivity implements SwipeRefreshLayou
 
         intent.putExtra(EXTRA_CURRENCY_ID, clickedItem.currencyID);
         intent.putExtra(EXTRA_CURRENCY_PRICE, clickedItem.currencyPrice);
+        intent.putExtra(EXTRA_CURRENCY_24H_VOLUME_USD, clickedItem.currencyM24H);
+        intent.putExtra(EXTRA_CURRENCY_AVAILABLE_SUPPLY, clickedItem.currencyASupply);
+        intent.putExtra(EXTRA_CURRENCY_RANK, clickedItem.currencyRank);
+        intent.putExtra(EXTRA_CURRENCY_SYMBOL, clickedItem.currencySymbol);
+        intent.putExtra(EXTRA_CURRENCY_MAX_SUPPLY, clickedItem.currencyMaxSupply);
+        intent.putExtra(EXTRA_CURRENCY_PRICE_BTC, clickedItem.currencyPriceBTC);
+//        intent.putExtra(EXTRA_CURRENCY_MARKETCAP_USD, clickedItem.)
+
+
         startActivity(intent);
-        //Todo add the xml file for new currencyDetail Class and retrive the id
     }
 
 
@@ -165,7 +173,7 @@ public class MainActivity extends AppCompatActivity implements SwipeRefreshLayou
 
                 int response_code = conn.getResponseCode();
 
-                // Check if successful connection made
+                // Check if successful connection is made
                 if (response_code == HttpURLConnection.HTTP_OK) {
 
                     // Read data sent from server
@@ -212,14 +220,11 @@ public class MainActivity extends AppCompatActivity implements SwipeRefreshLayou
                         dataCurrency.currencyID  = jsonObject.getString("name");
                         dataCurrency.currencyPrice = jsonObject.getDouble("price_usd");
                         dataCurrency.currencySymbol = jsonObject.getString("symbol");
-                        dataCurrency.currencySymbol = jsonObject.getString("rank");
-                        dataCurrency.currencySymbol = jsonObject.getString("price_usd");
-                        dataCurrency.currencySymbol = jsonObject.getString("24h_volume_usd");
-                        dataCurrency.currencySymbol = jsonObject.getString("market_cap_usd");
-                        dataCurrency.currencySymbol = jsonObject.getString("available_supply");
-                        dataCurrency.currencySymbol = jsonObject.getString("total_supply");
-                        dataCurrency.currencySymbol = jsonObject.getString("max_supply");
-
+                        dataCurrency.currencyRank = jsonObject.getInt("rank");
+                        dataCurrency.currencyM24H = jsonObject.getInt("24h_volume_usd");
+                        dataCurrency.currencyMaxSupply = jsonObject.getInt("market_cap_usd");
+                        dataCurrency.currencyTotalSupply = jsonObject.getInt("total_supply");
+                        dataCurrency.currencyPriceBTC = jsonObject.getInt("price_btc");
 
                         jsonData.add(dataCurrency);
                     }

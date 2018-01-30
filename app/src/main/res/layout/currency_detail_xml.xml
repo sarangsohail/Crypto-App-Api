@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
+<LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:orientation="vertical">
 
     <TextView
     android:id="@+id/currencyNameBig"
@@ -20,15 +21,65 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:paddingLeft="70dp"
-        android:paddingTop="150dp"
         android:textSize="30dp"
         />
 
-    <!--<TextView-->
-        <!--android:layout_width="wrap_content"-->
-        <!--android:layout_height="wrap_content"-->
-        <!--android:paddingLeft="30"-->
-        <!--android:paddingTop="50dp"-->
-        <!--android:text="@string/currencyName"-->
-        <!--/>-->
-</RelativeLayout>
+    <TextView
+        android:id="@+id/currencySymbol"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="30dp"
+        />
+    <TextView
+        android:id="@+id/currencySupply"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="30dp"
+        />
+    <TextView
+        android:id="@+id/currencyRank"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingLeft="70dp"
+        android:textSize="30dp"
+        />
+    <TextView
+    android:id="@+id/currencyPriceBTC"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:paddingLeft="70dp"
+    android:textSize="30dp"
+        android:layout_below="@id/currencyRank"
+    />
+    <TextView
+    android:id="@+id/currency24Volume"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:textSize="30dp"
+    />
+    <TextView
+        android:id="@+id/currencyMarketCap"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:textSize="30dp"
+        />
+
+
+    <TextView
+        android:id="@+id/currencyTotalSupply"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:textSize="30dp"
+        />
+    <TextView
+        android:id="@+id/currencyMaxSupply"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:textSize="30dp"
+        />
+
+
+</LinearLayout>

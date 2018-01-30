@@ -18,7 +18,7 @@ import java.util.List;
  * Created by sarang on 23/01/2018.
  */
 
-class AdapterCurrency extends RecyclerView.Adapter<RecyclerView.ViewHolder>  {
+class AdapterCurrency extends RecyclerView.Adapter<AdapterCurrency.MyHolder>  {
 
     Context mContext;
     LayoutInflater layoutInflater;
@@ -41,18 +41,22 @@ class AdapterCurrency extends RecyclerView.Adapter<RecyclerView.ViewHolder>  {
     }
 
     @Override
-    public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    public AdapterCurrency.MyHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = layoutInflater.inflate(R.layout.container_currency, parent, false);
         MyHolder holder = new MyHolder(view);
         return holder;
     }
 
     @Override
-    public void onBindViewHolder(RecyclerView.ViewHolder holder, final int position) {
-        final MyHolder myholder = (MyHolder)holder;
+    public void onBindViewHolder(AdapterCurrency.MyHolder myholder, final int position) {
         final DataCurrency current = currencyList.get(position);
         myholder.textCurrencyName.setText(current.currencyID);
         myholder.textCurrencyPrice.setText("$" + current.currencyPrice);
+//        myholder.textCurrencyRank.setText(current.currencyRank);
+//        myholder.textCurrencyMarketSupply.setText(current.currencyASupply);
+//        myholder.textCurrencyMarketCap.setText(current.currencyMaxSupply);
+//        myholder.textCurrency24Volume.setText(current.currencyM24H);
+//        myholder.textCurrencyPriceBTC.setText(current.currencyPriceBTC);
 
 
     }
@@ -69,10 +73,12 @@ class AdapterCurrency extends RecyclerView.Adapter<RecyclerView.ViewHolder>  {
         TextView textCurrencyName;
         TextView textCurrencyPrice;
 
+
         public MyHolder(View itemView) {
             super(itemView);
             textCurrencyName = (TextView) itemView.findViewById(R.id.currencyName);
             textCurrencyPrice = (TextView) itemView.findViewById(R.id.currencyPrice);
+
 
             itemView.setOnClickListener(new View.OnClickListener(){
 
