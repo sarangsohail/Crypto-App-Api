@@ -13,7 +13,6 @@ import android.widget.TextView;
 import java.util.Collections;
 import java.util.List;
 
-import static android.content.ContentValues.TAG;
 
 /**
  * Created by sarang on 23/01/2018.

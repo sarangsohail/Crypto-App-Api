@@ -40,6 +40,7 @@ public class MainActivity extends AppCompatActivity implements SwipeRefreshLayou
     public static final int CONNECTION_TIMEOUT = 1000;
     public static final int READ_TIMEOUT = 10000;
     public static final String EXTRA_CURRENCY_ID = "id";
+    public static final String EXTRA_CURRENCY_PRICE = "price_usd";
 
     private RecyclerView mRVCurrencyPrice;
     private AdapterCurrency mAdapter;
@@ -103,6 +104,7 @@ public class MainActivity extends AppCompatActivity implements SwipeRefreshLayou
         DataCurrency clickedItem = jsonData.get(position);
 
         intent.putExtra(EXTRA_CURRENCY_ID, clickedItem.currencyID);
+        intent.putExtra(EXTRA_CURRENCY_PRICE, clickedItem.currencyPrice);
         startActivity(intent);
         //Todo add the xml file for new currencyDetail Class and retrive the id
     }
@@ -188,7 +190,8 @@ public class MainActivity extends AppCompatActivity implements SwipeRefreshLayou
         protected void onPostExecute(String result) {
             //run on the ui thread
             pdLoading.dismiss();
-            List<DataCurrency> data = new ArrayList<>();
+//           pass the data from the post execute to array above
+            jsonData = new ArrayList<>();
             pdLoading.dismiss();
 
                 try {
@@ -199,12 +202,12 @@ public class MainActivity extends AppCompatActivity implements SwipeRefreshLayou
                         DataCurrency dataCurrency = new DataCurrency();
                         dataCurrency.currencyID  = jsonObject.getString("name");
                         dataCurrency.currencyPrice = jsonObject.getDouble("price_usd");
-                        data.add(dataCurrency);
+                        jsonData.add(dataCurrency);
                     }
 
                     //setu[ and handover data to the RV
                     mRVCurrencyPrice = (RecyclerView) findViewById(R.id.currencyRV);
-                    mAdapter =  new AdapterCurrency(MainActivity.this, data);
+                    mAdapter =  new AdapterCurrency(MainActivity.this, jsonData);
                     mRVCurrencyPrice.setAdapter(mAdapter);
                     mAdapter.setOnClickListener(MainActivity.this);
                     mSwipeRefreshLayout.setRefreshing(false);
