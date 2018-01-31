@@ -4,6 +4,7 @@ import android.app.ProgressDialog;
 import android.content.Intent;
 import android.nfc.Tag;
 import android.os.AsyncTask;
+import android.provider.ContactsContract;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -33,6 +34,8 @@ import java.net.URL;
 import java.nio.charset.MalformedInputException;
 import java.util.ArrayList;
 import java.util.List;
+
+import static java.util.Objects.isNull;
 
 public class MainActivity extends AppCompatActivity implements SwipeRefreshLayout.OnRefreshListener, AdapterCurrency.OnItemClickListener{
 
@@ -112,6 +115,7 @@ public class MainActivity extends AppCompatActivity implements SwipeRefreshLayou
         Intent intent = new Intent(this, CurrencyDetail.class);
         DataCurrency clickedItem = jsonData.get(position);
 
+
         intent.putExtra(EXTRA_CURRENCY_ID, clickedItem.currencyID);
         intent.putExtra(EXTRA_CURRENCY_PRICE, clickedItem.currencyPrice);
         intent.putExtra(EXTRA_CURRENCY_24H_VOLUME_USD, clickedItem.currencyM24H);
@@ -121,6 +125,7 @@ public class MainActivity extends AppCompatActivity implements SwipeRefreshLayou
         intent.putExtra(EXTRA_CURRENCY_MAX_SUPPLY, clickedItem.currencyMaxSupply);
         intent.putExtra(EXTRA_CURRENCY_PRICE_BTC, clickedItem.currencyPriceBTC);
 //        intent.putExtra(EXTRA_CURRENCY_MARKETCAP_USD, clickedItem.)
+
 
 
         startActivity(intent);
@@ -217,17 +222,21 @@ public class MainActivity extends AppCompatActivity implements SwipeRefreshLayou
                     for (int i =0; i< jsonArray.length(); i++){
                         JSONObject jsonObject = jsonArray.getJSONObject(i);
                         DataCurrency dataCurrency = new DataCurrency();
-                        dataCurrency.currencyID  = jsonObject.getString("name");
+                        if(!jsonObject.isNull("max_supply")) {
+                            dataCurrency.currencyMaxSupply = jsonObject.getInt("max_supply");
+                        }
+                        dataCurrency.currencyID = jsonObject.getString("name");
                         dataCurrency.currencyPrice = jsonObject.getDouble("price_usd");
                         dataCurrency.currencySymbol = jsonObject.getString("symbol");
+                        dataCurrency.currencyASupply = jsonObject.getDouble("available_supply");
                         dataCurrency.currencyRank = jsonObject.getInt("rank");
                         dataCurrency.currencyM24H = jsonObject.getInt("24h_volume_usd");
-                        dataCurrency.currencyMaxSupply = jsonObject.getInt("market_cap_usd");
                         dataCurrency.currencyTotalSupply = jsonObject.getInt("total_supply");
                         dataCurrency.currencyPriceBTC = jsonObject.getInt("price_btc");
 
                         jsonData.add(dataCurrency);
                     }
+
 
                     //setu[ and handover data to the RV
                     mRVCurrencyPrice = (RecyclerView) findViewById(R.id.currencyRV);
@@ -240,11 +249,13 @@ public class MainActivity extends AppCompatActivity implements SwipeRefreshLayou
 
                 } catch (JSONException e) {
 
-                    Toast.makeText(MainActivity.this, e.toString(), Toast.LENGTH_SHORT).show();
+                    Toast.makeText(MainActivity.this, e.toString(), Toast.LENGTH_LONG).show();
+                    Log.d(TAG, e.toString());
                 }
         }
 
     }
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {

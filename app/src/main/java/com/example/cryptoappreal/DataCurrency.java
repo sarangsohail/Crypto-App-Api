@@ -12,7 +12,7 @@ public class DataCurrency {
     public int currencyRank;
     public int currencyPriceBTC;
     public int currencyM24H;
-    public int currencyASupply;
+    public double currencyASupply;
     public int currencyTotalSupply;
     public int currencyMaxSupply;
 

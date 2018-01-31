@@ -26,7 +26,7 @@ public class CurrencyDetail extends AppCompatActivity{
         Intent intentThatCalledThisActivity = getIntent();
         String currencyName = intentThatCalledThisActivity.getStringExtra(EXTRA_CURRENCY_ID);
         double  currencyPrice = intentThatCalledThisActivity.getDoubleExtra(EXTRA_CURRENCY_PRICE, 0.0);
-        int currencyASupply = intentThatCalledThisActivity.getIntExtra(EXTRA_CURRENCY_AVAILABLE_SUPPLY, 0);
+        double currencyASupply = intentThatCalledThisActivity.getDoubleExtra(EXTRA_CURRENCY_AVAILABLE_SUPPLY, 0.0);
         //tODO SORT OUT CURRENCY SUPPLY - EITHER NOT PSASING IN DATA COS THE DATA IS SET AS DEFAULT VALUE - 0
         TextView textCurrencySymbol;
         TextView textCurrencyRank;
@@ -47,9 +47,9 @@ public class CurrencyDetail extends AppCompatActivity{
 
 
         currencyNameView.setText(currencyName);
-        currencyPriceView.setText(String.format(Locale.UK, "$%.3f",  currencyPrice));
-       // textCurrencyRank.setText();
-         textCurrencyMarketSupply.setText(Integer.toString(currencyASupply));
+        currencyPriceView.setText(String.format(Locale.UK, "$%.3f",currencyPrice));
+        textCurrencyMarketSupply.setText(String.format(Locale.UK, "%f", currencyASupply));
+        // textCurrencyRank.setText();
 //        textCurrencyMarketCap.setText(current.currencyMaxSupply);
 //        textCurrency24Volume.setText(current.currencyM24H);
 //        textCurrencyPriceBTC.setText(current.currencyPriceBTC);
