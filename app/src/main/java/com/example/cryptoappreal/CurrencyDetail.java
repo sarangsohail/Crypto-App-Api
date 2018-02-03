@@ -8,6 +8,7 @@ import android.widget.TextView;
 
 import java.util.Locale;
 
+import static com.example.cryptoappreal.MainActivity.EXTRA_CURRENCY_24H_VOLUME_USD;
 import static com.example.cryptoappreal.MainActivity.EXTRA_CURRENCY_AVAILABLE_SUPPLY;
 import static com.example.cryptoappreal.MainActivity.EXTRA_CURRENCY_ID;
 import static com.example.cryptoappreal.MainActivity.EXTRA_CURRENCY_PRICE;
@@ -33,12 +34,12 @@ public class CurrencyDetail extends AppCompatActivity{
         String currencySymbol = intentThatCalledThisActivity.getStringExtra(EXTRA_CURRENCY_SYMBOL);
         int currencyRank = intentThatCalledThisActivity.getIntExtra(EXTRA_CURRENCY_RANK,0);
         double currentPriceBTC = intentThatCalledThisActivity.getDoubleExtra(EXTRA_CURRENCY_PRICE_BTC, 0.0);
+        int currency24Volume = intentThatCalledThisActivity.getIntExtra(EXTRA_CURRENCY_24H_VOLUME_USD, 0);
 
         TextView textCurrencySymbol;
         TextView textCurrencyRank;
         TextView textCurrencyPriceBTC;
         TextView textCurrency24Volume;
-        TextView textCurrencyMarketCap;
         TextView textCurrencyMarketSupply;
 
         TextView currencyNameView = (TextView) findViewById(R.id.currencyNameBig);
@@ -48,7 +49,6 @@ public class CurrencyDetail extends AppCompatActivity{
         textCurrencyRank = (TextView) findViewById(R.id.currencyRank);
         textCurrencyPriceBTC = (TextView) findViewById(R.id.currencyPriceBTC);
         textCurrency24Volume = (TextView) findViewById(R.id.currency24Volume);
-        textCurrencyMarketCap= (TextView) findViewById(R.id.currencyMarketCap);
 
 
 
@@ -57,12 +57,9 @@ public class CurrencyDetail extends AppCompatActivity{
         currencyPriceView.setText(String.format(Locale.UK, "$%.3f",currencyPrice));
         textCurrencyMarketSupply.setText(String.format(Locale.UK, "%f", currencyASupply));
         textCurrencyRank.setText(Integer.toString(currencyRank));
-        textCurrencyPriceBTC.setText(String.format(Locale.UK, "%.5",currentPriceBTC));
+        textCurrencyPriceBTC.setText(String.format(Locale.UK, "%.5f",currentPriceBTC));
+        textCurrency24Volume.setText(Integer.toString(currency24Volume));
 
-        // textCurrencyRank.setText();
-//        textCurrencyMarketCap.setText(current.currencyMaxSupply);
-//        textCurrency24Volume.setText(current.currencyM24H);
-//        textCurrencyPriceBTC.setText(current.currencyPriceBTC);
         }
 }
 

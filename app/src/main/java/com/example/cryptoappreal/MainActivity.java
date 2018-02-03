@@ -114,7 +114,6 @@ public class MainActivity extends AppCompatActivity implements SwipeRefreshLayou
         Intent intent = new Intent(this, CurrencyDetail.class);
         DataCurrency clickedItem = jsonData.get(position);
 
-
         intent.putExtra(EXTRA_CURRENCY_ID, clickedItem.currencyID);
         intent.putExtra(EXTRA_CURRENCY_PRICE, clickedItem.currencyPrice);
         intent.putExtra(EXTRA_CURRENCY_24H_VOLUME_USD, clickedItem.currencyM24H);
@@ -123,7 +122,7 @@ public class MainActivity extends AppCompatActivity implements SwipeRefreshLayou
         intent.putExtra(EXTRA_CURRENCY_SYMBOL, clickedItem.currencySymbol);
         intent.putExtra(EXTRA_CURRENCY_MAX_SUPPLY, clickedItem.currencyMaxSupply);
         intent.putExtra(EXTRA_CURRENCY_PRICE_BTC, clickedItem.currencyPriceBTC);
-//        intent.putExtra(EXTRA_CURRENCY_MARKETCAP_USD, clickedItem.)
+
         startActivity(intent);
     }
 
@@ -230,7 +229,6 @@ public class MainActivity extends AppCompatActivity implements SwipeRefreshLayou
                         dataCurrency.currencyASupply = jsonObject.getDouble("available_supply");
                         dataCurrency.currencyRank = jsonObject.getInt("rank");
                         dataCurrency.currencyM24H = jsonObject.getInt("24h_volume_usd");
-                        dataCurrency.currencyTotalSupply = jsonObject.getInt("total_supply");
                         dataCurrency.currencyPriceBTC = jsonObject.getInt("price_btc");
 
                         jsonData.add(dataCurrency);
