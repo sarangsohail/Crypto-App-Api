@@ -13,7 +13,6 @@ public class DataCurrency {
     public double currencyPriceBTC;
     public int currencyM24H;
     public double currencyASupply;
-    public int currencyTotalSupply;
     public int currencyMaxSupply;
 
 }

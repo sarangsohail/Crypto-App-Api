@@ -8,9 +8,9 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 <TableLayout
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
-
+        android:layout_height="wrap_content"
+        android:layout_width="fill_parent"
+    >
 
     <TableRow>
         
@@ -19,45 +19,52 @@
             android:layout_height="wrap_content"
             android:text="Currency: "
             android:paddingLeft="10dp"
-            android:textSize="20dp"
-            android:paddingTop="4dp"
+            android:textSize="25dp"
+            android:paddingTop="15dp"
             android:id="@+id/currencyNameTV"
 
             />
+
         <TextView
             android:id="@+id/currencyNameBig"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="20dp"
-            android:layout_gravity="end"
-            android:layout_weight="1"
+            android:textSize="25dp"
+            android:paddingTop="15dp"
+            android:paddingLeft="80dp"
             />
     </TableRow>
 
-
-
+    <TableRow>
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Price: "
-        android:paddingLeft="7dp"
-        android:textSize="20dp"
+        android:textSize="25dp"
+        android:paddingLeft="10dp"
+        android:paddingTop="15dp"
         android:id="@+id/currencyPriceTV"
+
         />
     <TextView
         android:id="@+id/currencyPriceBig"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:paddingLeft="70dp"
-        android:textSize="30dp"
+        android:paddingLeft="180dp"
+        android:paddingTop="15dp"
+        android:textSize="25dp"
         />
+    </TableRow>
+
+    <TableRow>
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Symbol: "
-        android:paddingLeft="7dp"
-        android:textSize="20dp"
+        android:textSize="25dp"
+        android:paddingLeft="10dp"
+        android:paddingTop="15dp"
         android:id="@+id/currencySymbolTV"
         />
     <TextView
@@ -65,13 +72,18 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textSize="30dp"
+        android:paddingTop="15dp"
         />
+    </TableRow>
+
+    <TableRow>
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Circulation Supply: "
-        android:paddingLeft="7dp"
-        android:textSize="20dp"
+        android:paddingLeft="10dp"
+        android:textSize="24dp"
+        android:paddingTop="15dp"
         android:id="@+id/currencyCirculationSupplyTV"
         />
     //currency supply is the current circulation supply
@@ -80,14 +92,19 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textSize="30dp"
+        android:paddingTop="15dp"
         android:paddingLeft="16dp"
         />
+    </TableRow>
+
+    <TableRow>
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Rank: "
-        android:paddingLeft="7dp"
-        android:textSize="20dp"
+        android:paddingLeft="10dp"
+        android:textSize="24dp"
+        android:paddingTop="15dp"
         android:id="@+id/currencyRankTV"
         />
     <TextView
@@ -96,35 +113,44 @@
         android:layout_height="wrap_content"
         android:textSize="16dp"
         />
+    </TableRow>
+
+    <TableRow>
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="BTC Price:"
         android:paddingLeft="10dp"
-        android:textSize="20dp"
+        android:textSize="24dp"
         android:id="@+id/currencyBTCPriceTV"
-        android:paddingTop="24dp"
+        android:paddingTop="15dp"
         />
-    <TextView
-    android:id="@+id/currencyPriceBTC"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    />
+        <TextView
+        android:id="@+id/currencyPriceBTC"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        />
+    </TableRow>
+    <TableRow>
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="24H Volume: "
         android:paddingLeft="10dp"
-        android:textSize="20dp"
+        android:textSize="24dp"
         android:id="@+id/currency24HVolumeTV"
-        android:paddingTop="24dp"
+        android:paddingTop="15dp"
         />
+    </TableRow>
     <TextView
     android:id="@+id/currency24Volume"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:textSize="30dp"
+    android:textSize="24dp"
     />
+    <TableRow>
+
+    </TableRow>
 
     <TextView
         android:id="@+id/currencyTotalSupply"
