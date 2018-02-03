@@ -11,6 +11,9 @@ import java.util.Locale;
 import static com.example.cryptoappreal.MainActivity.EXTRA_CURRENCY_AVAILABLE_SUPPLY;
 import static com.example.cryptoappreal.MainActivity.EXTRA_CURRENCY_ID;
 import static com.example.cryptoappreal.MainActivity.EXTRA_CURRENCY_PRICE;
+import static com.example.cryptoappreal.MainActivity.EXTRA_CURRENCY_PRICE_BTC;
+import static com.example.cryptoappreal.MainActivity.EXTRA_CURRENCY_RANK;
+import static com.example.cryptoappreal.MainActivity.EXTRA_CURRENCY_SYMBOL;
 
 /**
  * Created by sarang on 29/01/2018.
@@ -27,7 +30,10 @@ public class CurrencyDetail extends AppCompatActivity{
         String currencyName = intentThatCalledThisActivity.getStringExtra(EXTRA_CURRENCY_ID);
         double  currencyPrice = intentThatCalledThisActivity.getDoubleExtra(EXTRA_CURRENCY_PRICE, 0.0);
         double currencyASupply = intentThatCalledThisActivity.getDoubleExtra(EXTRA_CURRENCY_AVAILABLE_SUPPLY, 0.0);
-        //tODO SORT OUT CURRENCY SUPPLY - EITHER NOT PSASING IN DATA COS THE DATA IS SET AS DEFAULT VALUE - 0
+        String currencySymbol = intentThatCalledThisActivity.getStringExtra(EXTRA_CURRENCY_SYMBOL);
+        int currencyRank = intentThatCalledThisActivity.getIntExtra(EXTRA_CURRENCY_RANK,0);
+        double currentPriceBTC = intentThatCalledThisActivity.getDoubleExtra(EXTRA_CURRENCY_PRICE_BTC, 0.0);
+
         TextView textCurrencySymbol;
         TextView textCurrencyRank;
         TextView textCurrencyPriceBTC;
@@ -37,21 +43,26 @@ public class CurrencyDetail extends AppCompatActivity{
 
         TextView currencyNameView = (TextView) findViewById(R.id.currencyNameBig);
         TextView currencyPriceView = (TextView) findViewById(R.id.currencyPriceBig);
+        textCurrencyMarketSupply = (TextView) findViewById(R.id.currencySupply);
         textCurrencySymbol = (TextView) findViewById(R.id.currencySymbol);
         textCurrencyRank = (TextView) findViewById(R.id.currencyRank);
         textCurrencyPriceBTC = (TextView) findViewById(R.id.currencyPriceBTC);
         textCurrency24Volume = (TextView) findViewById(R.id.currency24Volume);
         textCurrencyMarketCap= (TextView) findViewById(R.id.currencyMarketCap);
-        textCurrencyMarketSupply = (TextView) findViewById(R.id.currencySupply);
 
 
 
         currencyNameView.setText(currencyName);
+        textCurrencySymbol.setText(currencySymbol);
         currencyPriceView.setText(String.format(Locale.UK, "$%.3f",currencyPrice));
         textCurrencyMarketSupply.setText(String.format(Locale.UK, "%f", currencyASupply));
+        textCurrencyRank.setText(Integer.toString(currencyRank));
+        textCurrencyPriceBTC.setText(String.format(Locale.UK, "%.5",currentPriceBTC));
+
         // textCurrencyRank.setText();
 //        textCurrencyMarketCap.setText(current.currencyMaxSupply);
 //        textCurrency24Volume.setText(current.currencyM24H);
 //        textCurrencyPriceBTC.setText(current.currencyPriceBTC);
         }
 }
+

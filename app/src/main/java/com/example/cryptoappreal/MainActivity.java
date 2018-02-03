@@ -50,7 +50,6 @@ public class MainActivity extends AppCompatActivity implements SwipeRefreshLayou
     public static final String EXTRA_CURRENCY_24H_VOLUME_USD = "24Volume";
     public static final String EXTRA_CURRENCY_MARKETCAP_USD  = "marketcap";
     public static final String EXTRA_CURRENCY_AVAILABLE_SUPPLY = "supply";
-//    public static final String EXTRA_CURRENCY_TOTAL_SUPPLY = "totalSupply";
     public static final String EXTRA_CURRENCY_MAX_SUPPLY= "maxSupply";
 
 
@@ -125,9 +124,6 @@ public class MainActivity extends AppCompatActivity implements SwipeRefreshLayou
         intent.putExtra(EXTRA_CURRENCY_MAX_SUPPLY, clickedItem.currencyMaxSupply);
         intent.putExtra(EXTRA_CURRENCY_PRICE_BTC, clickedItem.currencyPriceBTC);
 //        intent.putExtra(EXTRA_CURRENCY_MARKETCAP_USD, clickedItem.)
-
-
-
         startActivity(intent);
     }
 
@@ -160,13 +156,13 @@ public class MainActivity extends AppCompatActivity implements SwipeRefreshLayou
             }
             try {
 
-                // Setup HttpURLConnection class to send and receive data from php and mysql
+                // Setup HttpURLConnection class to receive data from api
                 conn = (HttpURLConnection) url.openConnection();
                 conn.setReadTimeout(READ_TIMEOUT);
                 conn.setConnectTimeout(CONNECTION_TIMEOUT);
                 conn.setRequestMethod("GET");
 
-                // setDoOutput to true as we receive data from json file
+                //data is received from json file
                 conn.setDoOutput(true);
 
             } catch (IOException e1) {
@@ -181,7 +177,7 @@ public class MainActivity extends AppCompatActivity implements SwipeRefreshLayou
                 // Check if successful connection is made
                 if (response_code == HttpURLConnection.HTTP_OK) {
 
-                    // Read data sent from server
+                    // Read data sent from api
                     InputStream input = conn.getInputStream();
                     BufferedReader reader = new BufferedReader(new InputStreamReader(input));
                     StringBuilder sb = new StringBuilder();
@@ -222,9 +218,12 @@ public class MainActivity extends AppCompatActivity implements SwipeRefreshLayou
                     for (int i =0; i< jsonArray.length(); i++){
                         JSONObject jsonObject = jsonArray.getJSONObject(i);
                         DataCurrency dataCurrency = new DataCurrency();
+
+                        //api may return 'null' so check that
                         if(!jsonObject.isNull("max_supply")) {
                             dataCurrency.currencyMaxSupply = jsonObject.getInt("max_supply");
                         }
+
                         dataCurrency.currencyID = jsonObject.getString("name");
                         dataCurrency.currencyPrice = jsonObject.getDouble("price_usd");
                         dataCurrency.currencySymbol = jsonObject.getString("symbol");

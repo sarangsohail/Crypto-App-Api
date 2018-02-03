@@ -10,7 +10,7 @@ public class DataCurrency {
     public double currencyPrice;
     public String currencySymbol;
     public int currencyRank;
-    public int currencyPriceBTC;
+    public double currencyPriceBTC;
     public int currencyM24H;
     public double currencyASupply;
     public int currencyTotalSupply;

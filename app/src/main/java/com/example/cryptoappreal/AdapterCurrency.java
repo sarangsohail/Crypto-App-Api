@@ -52,11 +52,6 @@ class AdapterCurrency extends RecyclerView.Adapter<AdapterCurrency.MyHolder>  {
         final DataCurrency current = currencyList.get(position);
         myholder.textCurrencyName.setText(current.currencyID);
         myholder.textCurrencyPrice.setText("$" + current.currencyPrice);
-//        myholder.textCurrencyRank.setText(current.currencyRank);
-//        myholder.textCurrencyMarketSupply.setText(current.currencyASupply);
-//        myholder.textCurrencyMarketCap.setText(current.currencyMaxSupply);
-//        myholder.textCurrency24Volume.setText(current.currencyM24H);
-//        myholder.textCurrencyPriceBTC.setText(current.currencyPriceBTC);
 
 
     }
