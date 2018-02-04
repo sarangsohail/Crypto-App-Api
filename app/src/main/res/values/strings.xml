@@ -2,4 +2,5 @@
     <string name="app_name">CryptoApp</string>
     <string name="refresh">Refresh</string>
     <string name="currencyName"> Currency Name: </string>
+    <string name="search_icon">Search</string>
 </resources>

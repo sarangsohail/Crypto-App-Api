@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.nfc.Tag;
 import android.os.AsyncTask;
 import android.provider.ContactsContract;
+import android.support.v4.view.MenuItemCompat;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -18,6 +19,7 @@ import android.view.View;
 import android.view.ViewDebug;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
+import android.widget.SearchView;
 import android.widget.Toast;
 
 import org.json.JSONArray;
@@ -258,6 +260,31 @@ public class MainActivity extends AppCompatActivity implements SwipeRefreshLayou
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater menuInflater = getMenuInflater();
         menuInflater.inflate(R.menu.menu_items, menu);
+        //get actionView is deprecated so i'll use this to locate the search_button
+        MenuItem menuSearchItem = menu.findItem(R.id.search_button);
+        SearchView searchView = (SearchView) menuSearchItem.getActionView();
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String s) {
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                newText = newText.toLowerCase();
+                ArrayList<DataCurrency> newList = new ArrayList<>();
+
+                for (DataCurrency dataCurrency : jsonData){
+                    String currency = dataCurrency.currencyID;
+                    if (currency.contains(newText)){
+                        newList.add(dataCurrency);
+                    }
+
+                    mAdapter.setFilter(newList);
+                }
+                return true;            }
+        });
+
         return true;
         }
     @Override
@@ -266,8 +293,10 @@ public class MainActivity extends AppCompatActivity implements SwipeRefreshLayou
             //show the refresh animation and load the data again
             refreshItemClicked();
         }
+
         return super.onOptionsItemSelected(item);
     }
+
 
 
 

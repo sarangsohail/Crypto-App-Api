@@ -10,6 +10,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
@@ -93,4 +95,10 @@ class AdapterCurrency extends RecyclerView.Adapter<AdapterCurrency.MyHolder>  {
         }
     }
 
+    public void setFilter(ArrayList<DataCurrency> newlist){
+        currencyList = new ArrayList<>();
+        currencyList.addAll(newlist);
+        //refresh the adapter, because changes have been made in the array
+        notifyDataSetChanged();
+    }
 }
