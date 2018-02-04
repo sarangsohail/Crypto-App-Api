@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">CryptoAppReal</string>
+    <string name="app_name">CryptoApp</string>
     <string name="refresh">Refresh</string>
     <string name="currencyName"> Currency Name: </string>
 </resources>

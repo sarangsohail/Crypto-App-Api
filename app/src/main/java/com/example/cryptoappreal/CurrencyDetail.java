@@ -26,7 +26,6 @@ public class CurrencyDetail extends AppCompatActivity{
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.currency_detail_xml);
-
         Intent intentThatCalledThisActivity = getIntent();
         String currencyName = intentThatCalledThisActivity.getStringExtra(EXTRA_CURRENCY_ID);
         double  currencyPrice = intentThatCalledThisActivity.getDoubleExtra(EXTRA_CURRENCY_PRICE, 0.0);
