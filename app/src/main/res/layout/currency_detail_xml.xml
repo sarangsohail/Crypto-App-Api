@@ -8,30 +8,29 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 <TableLayout
-        android:layout_height="wrap_content"
-        android:layout_width="fill_parent"
-    >
+        android:layout_height="match_parent"
+        android:layout_width="wrap_content"
+        android:stretchColumns="1">
 
     <TableRow>
-        
+
         <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Currency: "
-            android:paddingLeft="10dp"
-            android:textSize="25dp"
-            android:paddingTop="15dp"
             android:id="@+id/currencyNameTV"
-
-            />
+            android:layout_width="174dp"
+            android:layout_height="wrap_content"
+            android:paddingLeft="10dp"
+            android:paddingTop="15dp"
+            android:text="Currency: "
+            android:textSize="25dp" />
 
         <TextView
+            android:layout_column="1"
             android:id="@+id/currencyNameBig"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="25dp"
+            android:layout_gravity="center"
             android:paddingTop="15dp"
-            android:paddingLeft="80dp"
             />
     </TableRow>
 
@@ -45,15 +44,14 @@
         android:paddingLeft="10dp"
         android:paddingTop="15dp"
         android:id="@+id/currencyPriceTV"
-
         />
     <TextView
         android:id="@+id/currencyPriceBig"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:paddingLeft="180dp"
         android:paddingTop="15dp"
         android:textSize="25dp"
+        android:layout_gravity="center"
         />
     </TableRow>
 
@@ -71,8 +69,9 @@
         android:id="@+id/currencySymbol"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="30dp"
+        android:textSize="25dp"
         android:paddingTop="15dp"
+        android:layout_gravity="center"
         />
     </TableRow>
 
@@ -82,7 +81,7 @@
         android:layout_height="wrap_content"
         android:text="Circulation Supply: "
         android:paddingLeft="10dp"
-        android:textSize="24dp"
+        android:textSize="25dp"
         android:paddingTop="15dp"
         android:id="@+id/currencyCirculationSupplyTV"
         />
@@ -91,9 +90,9 @@
         android:id="@+id/currencySupply"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="30dp"
-        android:paddingTop="15dp"
-        android:paddingLeft="16dp"
+        android:textSize="18dp"
+        android:layout_gravity="center"
+        android:paddingTop="17dp"
         />
     </TableRow>
 
@@ -103,7 +102,7 @@
         android:layout_height="wrap_content"
         android:text="Rank: "
         android:paddingLeft="10dp"
-        android:textSize="24dp"
+        android:textSize="25dp"
         android:paddingTop="15dp"
         android:id="@+id/currencyRankTV"
         />
@@ -111,7 +110,8 @@
         android:id="@+id/currencyRank"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="16dp"
+        android:textSize="25dp"
+        android:layout_gravity="center"
         />
     </TableRow>
 
@@ -121,7 +121,7 @@
         android:layout_height="wrap_content"
         android:text="BTC Price:"
         android:paddingLeft="10dp"
-        android:textSize="24dp"
+        android:textSize="25dp"
         android:id="@+id/currencyBTCPriceTV"
         android:paddingTop="15dp"
         />
@@ -129,6 +129,8 @@
         android:id="@+id/currencyPriceBTC"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:textSize="25dp"
         />
     </TableRow>
     <TableRow>
@@ -137,17 +139,21 @@
         android:layout_height="wrap_content"
         android:text="24H Volume: "
         android:paddingLeft="10dp"
-        android:textSize="24dp"
+        android:textSize="25dp"
         android:id="@+id/currency24HVolumeTV"
         android:paddingTop="15dp"
         />
+
+        <TextView
+            android:id="@+id/currency24Volume"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="20dp"
+            android:layout_gravity="center"
+
+            />
     </TableRow>
-    <TextView
-    android:id="@+id/currency24Volume"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:textSize="24dp"
-    />
+
     <TableRow>
 
     </TableRow>
@@ -156,14 +162,12 @@
         android:id="@+id/currencyTotalSupply"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-
         android:textSize="30dp"
         />
     <TextView
         android:id="@+id/currencyMaxSupply"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-
         android:textSize="30dp"
         />
 </TableLayout>
