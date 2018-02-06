@@ -2,10 +2,12 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <item
-        android:id="@+id/search_button"
+        android:id="@+id/search_button1"
         app:showAsAction="always"
         android:icon="@drawable/ic_search_white_24dp"
-        android:title="@string/search_icon"/>
+        android:title="@string/search_icon"
+        app:actionViewClass="android.widget.SearchView" />
+
     <item
         android:id="@+id/refresh_button"
         app:showAsAction="ifRoom"

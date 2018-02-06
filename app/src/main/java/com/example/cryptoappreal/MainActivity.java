@@ -1,6 +1,8 @@
 package com.example.cryptoappreal;
 
 import android.app.ProgressDialog;
+import android.app.SearchManager;
+import android.content.Context;
 import android.content.Intent;
 import android.nfc.Tag;
 import android.os.AsyncTask;
@@ -236,7 +238,6 @@ public class MainActivity extends AppCompatActivity implements SwipeRefreshLayou
                         jsonData.add(dataCurrency);
                     }
 
-
                     //setu[ and handover data to the RV
                     mRVCurrencyPrice = (RecyclerView) findViewById(R.id.currencyRV);
                     mAdapter =  new AdapterCurrency(MainActivity.this, jsonData);
@@ -261,8 +262,11 @@ public class MainActivity extends AppCompatActivity implements SwipeRefreshLayou
         MenuInflater menuInflater = getMenuInflater();
         menuInflater.inflate(R.menu.menu_items, menu);
         //get actionView is deprecated so i'll use this to locate the search_button
-        MenuItem menuSearchItem = menu.findItem(R.id.search_button);
-        SearchView searchView = (SearchView) menuSearchItem.getActionView();
+//        MenuItem menuSearchItem = menu.findItem(R.id.);
+
+        SearchManager searchManager = (SearchManager) getSystemService(Context.SEARCH_SERVICE);
+        SearchView searchView = (SearchView) menu.findItem(R.id.search_button1).getActionView();
+        searchView.setSearchableInfo(searchManager.getSearchableInfo(getComponentName()));
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String s) {
