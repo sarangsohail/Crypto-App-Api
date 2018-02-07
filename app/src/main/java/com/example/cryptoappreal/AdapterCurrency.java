@@ -84,7 +84,7 @@ class AdapterCurrency extends RecyclerView.Adapter<AdapterCurrency.MyHolder>  {
                     //this checks if there actually is an listener
                     if (mOnItemClickListener != null){
                         int currentPos = getAdapterPosition();
-                        //checks if the position clicked is valid
+                        //checks if the position clicked is vlid
                         if (currentPos != RecyclerView.NO_POSITION){
                             //pass to interface method
                             mOnItemClickListener.setOnClickItemListener(currentPos);
@@ -96,8 +96,7 @@ class AdapterCurrency extends RecyclerView.Adapter<AdapterCurrency.MyHolder>  {
     }
 
     public void setFilter(ArrayList<DataCurrency> newlist){
-        currencyList = new ArrayList<>();
-        currencyList.addAll(newlist);
+        currencyList = newlist;
         //refresh the adapter, because changes have been made in the array
         notifyDataSetChanged();
     }

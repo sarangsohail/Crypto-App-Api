@@ -277,16 +277,16 @@ public class MainActivity extends AppCompatActivity implements SwipeRefreshLayou
             public boolean onQueryTextChange(String newText) {
                 newText = newText.toLowerCase();
                 ArrayList<DataCurrency> newList = new ArrayList<>();
-
+                Log.d(TAG, "Just before loop");
                 for (DataCurrency dataCurrency : jsonData){
-                    String currency = dataCurrency.currencyID;
+                    String currency = dataCurrency.currencyID.toLowerCase();
                     if (currency.contains(newText)){
                         newList.add(dataCurrency);
                     }
-
                     mAdapter.setFilter(newList);
                 }
-                return true;            }
+                return true;
+            }
         });
 
         return true;
