@@ -282,6 +282,8 @@ public class MainActivity extends AppCompatActivity implements SwipeRefreshLayou
                 return true;
             }
         });
+//TODO fix the problem with the search + add page swiper
+        g
 
         return true;
         }
