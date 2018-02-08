@@ -39,7 +39,6 @@ import java.nio.charset.MalformedInputException;
 import java.util.ArrayList;
 import java.util.List;
 
-import static java.util.Objects.isNull;
 
 public class MainActivity extends AppCompatActivity implements SwipeRefreshLayout.OnRefreshListener, AdapterCurrency.OnItemClickListener{
 
@@ -128,11 +127,11 @@ public class MainActivity extends AppCompatActivity implements SwipeRefreshLayou
         intent.putExtra(EXTRA_CURRENCY_PRICE_BTC, clickedItem.currencyPriceBTC);
 
         startActivity(intent);
+
     }
 
 
     private class AsyncFetch extends AsyncTask<String, String, String>  {
-        ProgressDialog pdLoading = new ProgressDialog(MainActivity.this);
         HttpURLConnection conn;
         URL url = null;
 
@@ -209,11 +208,7 @@ public class MainActivity extends AppCompatActivity implements SwipeRefreshLayou
 
         @Override
         protected void onPostExecute(String result) {
-            //run on the ui thread
-            pdLoading.dismiss();
-//           pass the data from the post execute to array above
             jsonData = new ArrayList<>();
-            pdLoading.dismiss();
 
                 try {
                     JSONArray jsonArray = new JSONArray(result);
@@ -277,7 +272,6 @@ public class MainActivity extends AppCompatActivity implements SwipeRefreshLayou
             public boolean onQueryTextChange(String newText) {
                 newText = newText.toLowerCase();
                 ArrayList<DataCurrency> newList = new ArrayList<>();
-                Log.d(TAG, "Just before loop");
                 for (DataCurrency dataCurrency : jsonData){
                     String currency = dataCurrency.currencyID.toLowerCase();
                     if (currency.contains(newText)){

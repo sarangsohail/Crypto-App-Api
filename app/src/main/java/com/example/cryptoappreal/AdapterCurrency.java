@@ -1,8 +1,7 @@
 package com.example.cryptoappreal;
 
 import android.content.Context;
-import android.content.Intent;
-import android.support.v4.widget.SwipeRefreshLayout;
+
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -16,6 +15,7 @@ import java.util.Collections;
 import java.util.List;
 
 
+
 /**
  * Created by sarang on 23/01/2018.
  */
@@ -26,6 +26,7 @@ class AdapterCurrency extends RecyclerView.Adapter<AdapterCurrency.MyHolder>  {
     LayoutInflater layoutInflater;
     List<DataCurrency> currencyList = Collections.emptyList();
     OnItemClickListener mOnItemClickListener;
+    List<DataCurrency> jsonData;
 
 
     public interface OnItemClickListener{
@@ -50,11 +51,11 @@ class AdapterCurrency extends RecyclerView.Adapter<AdapterCurrency.MyHolder>  {
     }
 
     @Override
-    public void onBindViewHolder(AdapterCurrency.MyHolder myholder, final int position) {
-        final DataCurrency current = currencyList.get(position);
+    public void onBindViewHolder(AdapterCurrency.MyHolder myholder, int position) {
+        DataCurrency current = currencyList.get(position);
         myholder.textCurrencyName.setText(current.currencyID);
         myholder.textCurrencyPrice.setText("$" + current.currencyPrice);
-
+        myholder.textCurrencyRank2.setText(current.currencyRank+ ".");
 
     }
 
@@ -69,13 +70,13 @@ class AdapterCurrency extends RecyclerView.Adapter<AdapterCurrency.MyHolder>  {
 
         TextView textCurrencyName;
         TextView textCurrencyPrice;
-
+        TextView textCurrencyRank2;
 
         public MyHolder(View itemView) {
             super(itemView);
             textCurrencyName = (TextView) itemView.findViewById(R.id.currencyName);
             textCurrencyPrice = (TextView) itemView.findViewById(R.id.currencyPrice);
-
+            textCurrencyRank2 = (TextView) itemView.findViewById(R.id.textCurrencyRank1);
 
             itemView.setOnClickListener(new View.OnClickListener(){
 
@@ -99,5 +100,8 @@ class AdapterCurrency extends RecyclerView.Adapter<AdapterCurrency.MyHolder>  {
         currencyList = newlist;
         //refresh the adapter, because changes have been made in the array
         notifyDataSetChanged();
+
     }
+
+
 }
