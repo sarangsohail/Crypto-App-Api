@@ -3,4 +3,8 @@
     <string name="refresh">Refresh</string>
     <string name="currencyName"> Currency Name: </string>
     <string name="search_icon">Search</string>
+    <string name="search_hint">Find A Currency</string>
+    <string name="aboutClick">About</string>
+
+    <string name="about_app_text">Check the current status of the top 100 cryptocurrencies.</string>
 </resources>

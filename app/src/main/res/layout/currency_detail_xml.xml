@@ -116,22 +116,7 @@
     </TableRow>
 
     <TableRow>
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="BTC Price:"
-        android:paddingLeft="10dp"
-        android:textSize="25dp"
-        android:id="@+id/currencyBTCPriceTV"
-        android:paddingTop="15dp"
-        />
-        <TextView
-        android:id="@+id/currencyPriceBTC"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:textSize="25dp"
-        />
+
     </TableRow>
     <TableRow>
     <TextView

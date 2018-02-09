@@ -124,8 +124,6 @@ public class MainActivity extends AppCompatActivity implements SwipeRefreshLayou
         intent.putExtra(EXTRA_CURRENCY_RANK, clickedItem.currencyRank);
         intent.putExtra(EXTRA_CURRENCY_SYMBOL, clickedItem.currencySymbol);
         intent.putExtra(EXTRA_CURRENCY_MAX_SUPPLY, clickedItem.currencyMaxSupply);
-        intent.putExtra(EXTRA_CURRENCY_PRICE_BTC, clickedItem.currencyPriceBTC);
-
         startActivity(intent);
 
     }
@@ -228,7 +226,6 @@ public class MainActivity extends AppCompatActivity implements SwipeRefreshLayou
                         dataCurrency.currencyASupply = jsonObject.getDouble("available_supply");
                         dataCurrency.currencyRank = jsonObject.getInt("rank");
                         dataCurrency.currencyM24H = jsonObject.getInt("24h_volume_usd");
-                        dataCurrency.currencyPriceBTC = jsonObject.getInt("price_btc");
 
                         jsonData.add(dataCurrency);
                     }
@@ -261,6 +258,7 @@ public class MainActivity extends AppCompatActivity implements SwipeRefreshLayou
 
         SearchManager searchManager = (SearchManager) getSystemService(Context.SEARCH_SERVICE);
         SearchView searchView = (SearchView) menu.findItem(R.id.search_button1).getActionView();
+        searchView.setQueryHint(getResources().getString(R.string.search_hint));
         searchView.setSearchableInfo(searchManager.getSearchableInfo(getComponentName()));
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
@@ -282,8 +280,8 @@ public class MainActivity extends AppCompatActivity implements SwipeRefreshLayou
                 return true;
             }
         });
-//TODO fix the problem with the search + add page swiper
-        g
+//TODO fix the problem with the search + add page swiper + finish off about intent
+
 
         return true;
         }
