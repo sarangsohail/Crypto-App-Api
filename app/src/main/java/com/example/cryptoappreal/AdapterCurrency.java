@@ -1,7 +1,5 @@
 package com.example.cryptoappreal;
-
 import android.content.Context;
-
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -9,12 +7,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
-
+import com.squareup.picasso.Picasso;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
-
-
 
 /**
  * Created by sarang on 23/01/2018.
@@ -26,8 +22,6 @@ class AdapterCurrency extends RecyclerView.Adapter<AdapterCurrency.MyHolder>  {
     LayoutInflater layoutInflater;
     List<DataCurrency> currencyList = Collections.emptyList();
     OnItemClickListener mOnItemClickListener;
-    List<DataCurrency> jsonData;
-
 
     public interface OnItemClickListener{
         void setOnClickItemListener(int position);
@@ -53,6 +47,7 @@ class AdapterCurrency extends RecyclerView.Adapter<AdapterCurrency.MyHolder>  {
     @Override
     public void onBindViewHolder(AdapterCurrency.MyHolder myholder, int position) {
         DataCurrency current = currencyList.get(position);
+        Picasso.with(mContext).load("https://files.coinmarketcap.com/static/img/coins/64x64/"+ current.icon + ".png").into(myholder.imageView);
         myholder.textCurrencyName.setText(current.currencyID);
         myholder.textCurrencyPrice.setText("$" + current.currencyPrice);
         myholder.textCurrencyRank2.setText(current.currencyRank+ ".");
@@ -71,9 +66,12 @@ class AdapterCurrency extends RecyclerView.Adapter<AdapterCurrency.MyHolder>  {
         TextView textCurrencyName;
         TextView textCurrencyPrice;
         TextView textCurrencyRank2;
+        ImageView imageView;
 
         public MyHolder(View itemView) {
             super(itemView);
+
+            imageView = (ImageView)itemView.findViewById(R.id.imageView);
             textCurrencyName = (TextView) itemView.findViewById(R.id.currencyName);
             textCurrencyPrice = (TextView) itemView.findViewById(R.id.currencyPrice);
             textCurrencyRank2 = (TextView) itemView.findViewById(R.id.textCurrencyRank1);
@@ -85,10 +83,11 @@ class AdapterCurrency extends RecyclerView.Adapter<AdapterCurrency.MyHolder>  {
                     //this checks if there actually is an listener
                     if (mOnItemClickListener != null){
                         int currentPos = getAdapterPosition();
+                        DataCurrency dc = currencyList.get(currentPos);
                         //checks if the position clicked is vlid
                         if (currentPos != RecyclerView.NO_POSITION){
                             //pass to interface method
-                            mOnItemClickListener.setOnClickItemListener(currentPos);
+                            mOnItemClickListener.setOnClickItemListener(dc.id);
                         }
                     }
                 }

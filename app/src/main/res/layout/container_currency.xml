@@ -17,8 +17,14 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/textCurrencyRank1"
-            android:layout_gravity="start"
             android:paddingRight="5px"
+            />
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="start"
+            android:id="@+id/imageView"
+            android:paddingLeft="25dp"
             />
 
         <TextView
@@ -28,6 +34,7 @@
             android:textAppearance="?android:attr/textAppearanceMedium"
             android:textAlignment="center"
             android:layout_gravity="center_horizontal"
+            android:textSize="25dp"
         />
 
         <TextView
@@ -36,7 +43,9 @@
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:id="@+id/currencyPrice"
         android:layout_gravity="end"
-        />
+            android:textSize="25dp"
+
+            />
 
     </android.support.v7.widget.CardView>
 

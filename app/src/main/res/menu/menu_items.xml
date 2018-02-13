@@ -14,8 +14,9 @@
         android:icon="@drawable/ic_replay_white_24dp"
         android:title="@string/refresh"/>
 
-    <item android:id="action_about"
-        app:showAsAction="collapseActionView"
-        android:title="@string/aboutClick"
-        />
+    <!--<item -->
+        <!--android:id="Menu_action_about"-->
+        <!--app:showAsAction="collapseActionView"-->
+        <!--android:title="@string/aboutClick"-->
+        <!--/>-->
 </menu>

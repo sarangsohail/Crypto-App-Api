@@ -211,7 +211,7 @@ public class MainActivity extends AppCompatActivity implements SwipeRefreshLayou
                 try {
                     JSONArray jsonArray = new JSONArray(result);
 
-                    for (int i =0; i< jsonArray.length(); i++){
+                    for (int i=0; i< jsonArray.length(); i++){
                         JSONObject jsonObject = jsonArray.getJSONObject(i);
                         DataCurrency dataCurrency = new DataCurrency();
 
@@ -220,6 +220,8 @@ public class MainActivity extends AppCompatActivity implements SwipeRefreshLayou
                             dataCurrency.currencyMaxSupply = jsonObject.getInt("max_supply");
                         }
 
+                        dataCurrency.id = i;
+                        dataCurrency.icon = jsonObject.getString("id");
                         dataCurrency.currencyID = jsonObject.getString("name");
                         dataCurrency.currencyPrice = jsonObject.getDouble("price_usd");
                         dataCurrency.currencySymbol = jsonObject.getString("symbol");

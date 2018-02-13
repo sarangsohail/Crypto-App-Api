@@ -6,6 +6,8 @@ package com.example.cryptoappreal;
 
 public class DataCurrency {
 
+    public int id;
+    public String icon;
     public String currencyID;
     public double currencyPrice;
     public String currencySymbol;
