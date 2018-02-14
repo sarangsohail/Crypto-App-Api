@@ -17,17 +17,11 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
-import android.view.View;
-import android.view.ViewDebug;
-import android.widget.LinearLayout;
-import android.widget.ProgressBar;
 import android.widget.SearchView;
 import android.widget.Toast;
-
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
@@ -35,7 +29,6 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
-import java.nio.charset.MalformedInputException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -54,6 +47,7 @@ public class MainActivity extends AppCompatActivity implements SwipeRefreshLayou
     public static final String EXTRA_CURRENCY_MARKETCAP_USD  = "marketcap";
     public static final String EXTRA_CURRENCY_AVAILABLE_SUPPLY = "supply";
     public static final String EXTRA_CURRENCY_MAX_SUPPLY= "maxSupply";
+    public static final String EXTRA_CURRENCY_URL = "URL";
 
 
     private RecyclerView mRVCurrencyPrice;
@@ -112,10 +106,13 @@ public class MainActivity extends AppCompatActivity implements SwipeRefreshLayou
 
     }
 
+    //not actually setting the onClick Listener
     @Override
     public void setOnClickItemListener(int position) {
         Intent intent = new Intent(this, CurrencyDetail.class);
         DataCurrency clickedItem = jsonData.get(position);
+
+        intent.putExtra(EXTRA_CURRENCY_URL, clickedItem.icon );
 
         intent.putExtra(EXTRA_CURRENCY_ID, clickedItem.currencyID);
         intent.putExtra(EXTRA_CURRENCY_PRICE, clickedItem.currencyPrice);
@@ -124,6 +121,7 @@ public class MainActivity extends AppCompatActivity implements SwipeRefreshLayou
         intent.putExtra(EXTRA_CURRENCY_RANK, clickedItem.currencyRank);
         intent.putExtra(EXTRA_CURRENCY_SYMBOL, clickedItem.currencySymbol);
         intent.putExtra(EXTRA_CURRENCY_MAX_SUPPLY, clickedItem.currencyMaxSupply);
+
         startActivity(intent);
 
     }
@@ -282,7 +280,6 @@ public class MainActivity extends AppCompatActivity implements SwipeRefreshLayou
                 return true;
             }
         });
-//TODO fix the problem with the search + add page swiper + finish off about intent
 
 
         return true;
