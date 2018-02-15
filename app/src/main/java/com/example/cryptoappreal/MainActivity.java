@@ -1,5 +1,6 @@
 package com.example.cryptoappreal;
 
+import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.app.SearchManager;
 import android.content.Context;
@@ -303,6 +304,12 @@ public class MainActivity extends AppCompatActivity implements SwipeRefreshLayou
         if (item.getItemId() == R.id.refresh_button) {
             //show the refresh animation and load the data again
             refreshItemClicked();
+        }
+
+        if (item.getItemId() == R.id.on_options_aboutButton){
+
+            AboutDialogFragment aboutDialogFragment = new AboutDialogFragment();
+            aboutDialogFragment.show(getFragmentManager(), "aboutDialogFragment");
         }
 
         return super.onOptionsItemSelected(item);

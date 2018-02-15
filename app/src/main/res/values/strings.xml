@@ -6,5 +6,6 @@
     <string name="search_hint">Find A Currency</string>
     <string name="aboutClick">About</string>
 
-    <string name="about_app_text">Check the current status of the top 100 cryptocurrencies.</string>
+    <string name="about_app_text">Just a simple app that allows you to check the current status of the top 100 cryptocurrencies.</string>
+    <string name="ok_button">OK, Boss!</string>
 </resources>
