@@ -13,11 +13,16 @@
         app:showAsAction="always"
         android:icon="@drawable/ic_replay_white_24dp"
         android:title="@string/refresh"/>
+    <item
+        android:title="Settings"
+        app:showAsAction="never"
+        android:id="@+id/on_menu_action_settings"
+        />
 
-    <!--<item-->
-        <!--android:id="Menu_action_about"-->
-        <!--app:showAsAction="collapseActionView"-->
-        <!--android:title="@string/aboutClick"-->
-        <!---->
-        <!--/>-->
+    <item
+        android:title="@string/aboutClick"
+        app:showAsAction="collapseActionView"
+        android:id="@+id/on_options_aboutButton"
+        />
+
 </menu>
