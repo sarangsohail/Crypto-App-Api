@@ -4,7 +4,7 @@
 
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
         android:allowBackup="true"
@@ -16,17 +16,24 @@
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
+
                 <action android:name="android.intent.action.SEARCH" />
             </intent-filter>
         </activity>
         <activity
             android:name=".CurrencyDetail"
-            android:parentActivityName=".MainActivity"/>
-        <meta-data android:name="android.app.searchable"
-            android:resource="@xml/searchable" />
+            android:parentActivityName=".MainActivity" />
 
+        <meta-data
+            android:name="android.app.searchable"
+            android:resource="@xml/searchable" /><![CDATA[
         />
+        ]]>
+        <activity
+            android:name=".SettingsActivity1"
+            android:label="@string/title_activity_settings1"></activity>
     </application>
 
 </manifest>
