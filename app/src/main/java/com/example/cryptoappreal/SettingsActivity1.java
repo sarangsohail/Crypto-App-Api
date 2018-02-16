@@ -56,11 +56,7 @@ public class SettingsActivity1 extends AppCompatPreferenceActivity {
                                 : null);
 
             }
-            else {
-                // For all other preferences, set the summary to the value's
-                // simple string representation.
 
-            }
             return true;
         }
     };
@@ -156,7 +152,6 @@ public class SettingsActivity1 extends AppCompatPreferenceActivity {
             super.onCreate(savedInstanceState);
             addPreferencesFromResource(R.xml.pref_notification);
             setHasOptionsMenu(true);
-
 
         }
 
