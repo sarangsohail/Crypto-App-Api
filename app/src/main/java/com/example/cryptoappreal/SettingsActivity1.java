@@ -107,9 +107,8 @@ public class SettingsActivity1 extends AppCompatPreferenceActivity {
         return isXLargeTablet(this);
     }
 
-    /**
-     * {@inheritDoc}
-     */
+
+    //titles of the options in the settings menu
     @Override
     public void onBuildHeaders(List<Header> target) {
         loadHeadersFromResource(R.xml.pref_titles, target);
