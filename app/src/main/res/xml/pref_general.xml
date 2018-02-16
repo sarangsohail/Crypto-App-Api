@@ -1,5 +1,11 @@
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
     //for general options in settings menu
-    
+
+    <CheckBoxPreference
+        android:title="@string/pricesInGBP"
+        android:key="@+id/checkboxPricesGBP"
+        android:summaryOff="In USD"
+        android:summaryOn="In GBP"
+        />
 
 </PreferenceScreen>

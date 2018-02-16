@@ -5,6 +5,7 @@
     <string name="search_icon">Search</string>
     <string name="search_hint">Find A Currency</string>
     <string name="aboutClick">About</string>
+    <string name="pricesInGBP">Show Currency Prices in GBP</string>
 
     <string name="about_app_text">Just a simple app that allows you to check the current status of the top 100 cryptocurrencies.</string>
     <string name="ok_button">OK, Boss!</string>
@@ -35,18 +36,6 @@
         <item>-1</item>
     </string-array>
 
-    <!-- Example settings for Data & Sync -->
-    <string name="pref_header_data_sync">Data &amp; sync</string>
-
-    <string name="pref_title_sync_frequency">Sync frequency</string>
-    <string-array name="pref_sync_frequency_titles">
-        <item>15 minutes</item>
-        <item>30 minutes</item>
-        <item>1 hour</item>
-        <item>3 hours</item>
-        <item>6 hours</item>
-        <item>Never</item>
-    </string-array>
     <string-array name="pref_sync_frequency_values">
         <item>15</item>
         <item>30</item>
