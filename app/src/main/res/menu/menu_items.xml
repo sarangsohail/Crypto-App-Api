@@ -19,10 +19,6 @@
         android:id="@+id/on_menu_action_settings"
         />
 
-    <item
-        android:title="@string/aboutClick"
-        app:showAsAction="collapseActionView"
-        android:id="@+id/on_options_aboutButton"
-        />
+
 
 </menu>

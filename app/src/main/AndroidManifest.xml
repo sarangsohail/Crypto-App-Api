@@ -32,7 +32,8 @@
         />
         ]]>
         <activity
-            android:name=".SettingsActivity1"
+            android:name=".SettingsActivity"
+            android:parentActivityName=".MainActivity"
             android:label="@string/title_activity_settings1"></activity>
     </application>
 

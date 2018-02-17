@@ -1,16 +1,11 @@
 package com.example.cryptoappreal;
 
-import android.app.AlertDialog;
-import android.app.ProgressDialog;
 import android.app.SearchManager;
 import android.content.Context;
 import android.content.Intent;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
-import android.nfc.Tag;
 import android.os.AsyncTask;
-import android.provider.ContactsContract;
-import android.support.v4.view.MenuItemCompat;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -31,7 +26,6 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
-import java.net.NetworkInterface;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
@@ -307,13 +301,8 @@ public class MainActivity extends AppCompatActivity implements SwipeRefreshLayou
             refreshItemClicked();
         }
         else if (item.getItemId() == R.id.on_menu_action_settings){
-            Intent loadSettingsActivity = new Intent(this, SettingsActivity1.class);
+            Intent loadSettingsActivity = new Intent(this, SettingsActivity.class);
             startActivity(loadSettingsActivity);
-        }
-        else if (item.getItemId() == R.id.on_options_aboutButton){
-
-            AboutDialogFragment aboutDialogFragment = new AboutDialogFragment();
-            aboutDialogFragment.show(getFragmentManager(), "aboutDialogFragment");
         }
 
         return super.onOptionsItemSelected(item);

@@ -3,14 +3,19 @@
     <!-- These settings headers are only used on tablets. -->
 
     <header
-        android:fragment="com.example.cryptoappreal.SettingsActivity1$GeneralPreferenceFragment"
+        android:fragment="com.example.cryptoappreal.SettingsActivity$GeneralPreferenceFragment"
         android:icon="@drawable/ic_settings_applications_black_24dp"
         android:title="@string/pref_header_general" />
 
     <header
-        android:fragment="com.example.cryptoappreal.SettingsActivity1$NotificationPreferenceFragment"
+        android:fragment="com.example.cryptoappreal.SettingsActivity$NotificationPreferenceFragment"
         android:icon="@drawable/ic_add_alert_black_24dp"
         android:title="@string/pref_header_notifications" />
+
+    <header
+        android:fragment="com.example.cryptoappreal.SettingsActivity$AboutPreferenceFragment"
+        android:title="@string/pref_header_about"/>
+        <!--android:icon="@drawable/"-->
 
 
 </preference-headers>

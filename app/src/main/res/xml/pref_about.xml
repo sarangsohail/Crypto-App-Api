@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:key="aboutKey"
+        android:title="@string/aboutClick"
+        android:id="@+id/on_settings_aboutButton"
+        />
+</PreferenceScreen>
