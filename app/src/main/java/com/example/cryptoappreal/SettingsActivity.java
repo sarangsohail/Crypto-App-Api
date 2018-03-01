@@ -19,7 +19,6 @@ import java.util.List;
 
 public class SettingsActivity extends AppCompatPreferenceActivity {
 
-
     /**
      * A preference value change listener that updates the preference's summary
      * to reflect its new value.
@@ -124,7 +123,7 @@ public class SettingsActivity extends AppCompatPreferenceActivity {
                 startActivity(new Intent(getActivity(), SettingsActivity.class));
                 return true;
             }else if (id == R.id.checkboxPricesGBP){
-
+            //TODO: sort the usd to gbp price conversion issue.
             }
             return super.onOptionsItemSelected(item);
         }
@@ -169,6 +168,7 @@ public class SettingsActivity extends AppCompatPreferenceActivity {
             addPreferencesFromResource(R.xml.pref_about);
             setHasOptionsMenu(true);
             //TODO: no reference to the key in pref_about file
+            //TODO: sort this out
             Preference myPref = (Preference) findPreference("aboutKey");
             myPref.setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
                 public boolean onPreferenceClick(Preference preference) {
